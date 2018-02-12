@@ -300,9 +300,12 @@ tags
 pyvenv.cfg
 pip-selfcheck.json
 
-
-
-
+###
 myangram/media/
 
+### pycharm
+.idea
+
+### vscode
+.vscode
 

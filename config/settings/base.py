@@ -56,6 +56,7 @@ LOCAL_APPS = [
     # custom users app
     'myangram.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+    'myangram.images'
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -111,7 +112,15 @@ MANAGERS = ADMINS
 # Uses django-environ to accept uri format
 # See: https://django-environ.readthedocs.io/en/latest/#supported-types
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://localhost/myangram'),
+    # 'default': env.db('DATABASE_URL', default='postgres://localhost/myangram'),
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myangram',
+        'USER': 'postgres',
+        'PASSWORD': 'saisei123!@#',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
