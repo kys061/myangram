@@ -1,23 +1,35 @@
 from rest_framework import serializers
 from . import models
+# from myangram.users import models as user_models
 
 
-class ImageSerializer(serializers.Serializer):
+class CommentSerializer(serializers.ModelSerializer):
+    # image = ImageSerializer()
 
     class Meta:
-        models = models.Image
+        model = models.Comment
         fields = '__all__'
 
 
-class CommentSerializer(serializers.Serializer):
+class LikeSerializer(serializers.ModelSerializer):
+    # image = ImageSerializer()
 
     class Meta:
-        models = models.Comment
+        model = models.Like
         fields = '__all__'
 
 
-class LikeSerializer(serializers.Serializer):
+class ImageSerializer(serializers.ModelSerializer):
+    comments = CommentSerializer(many=True)
+    likes = LikeSerializer(many=True)
 
     class Meta:
-        models = models.Like
-        fields = '__all__'
+        model = models.Image
+        fields = (
+            'id',
+            'location',
+            'caption',
+            'creator',
+            'comments',
+            'likes'
+        )

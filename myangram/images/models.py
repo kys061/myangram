@@ -30,7 +30,7 @@ class Comment(TimeStampedModel):
 
     message = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True)
-    image = models.ForeignKey(Image, null=True)
+    image = models.ForeignKey(Image, null=True, related_name='comments')
 
     def __str__(self):
         return 'who: {} - msg: {} at {}'.format(self.creator, self.message, self.created_at)
@@ -40,7 +40,7 @@ class Comment(TimeStampedModel):
 class Like(TimeStampedModel):
 
     creator = models.ForeignKey(user_models.User, null=True)
-    image = models.ForeignKey(Image, null=True)
+    image = models.ForeignKey(Image, null=True, related_name='likes')
 
     def __str__(self):
         return 'who: {} - msg: {} at {}'.format(self.creator, self.image, self.created_at)
