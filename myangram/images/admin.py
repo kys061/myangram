@@ -6,6 +6,7 @@ from . import models
 class ImageAdmin(admin.ModelAdmin):
 
     list_display = (
+        'id',
         'created_at',
         'updated_at',
         'file',
